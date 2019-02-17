@@ -1,0 +1,11 @@
+{
+  "name": "vaado/directo",
+  "autoload": {
+    "psr-4": {
+      "Directo\\": "src/"
+    }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^6.3"
+  }
+}
