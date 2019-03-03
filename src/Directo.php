@@ -2,7 +2,7 @@
 
 namespace Directo;
 
-class Directo {
+class Directo implements DirectoInterface {
 
     /**
      * @var string base URL.
@@ -21,7 +21,6 @@ class Directo {
 
     /**
      * Directo client constructor.
-     *
      * @param string $accountName Account Name, NULL if not provided
      * @param string $privateKey Private Key, NULL if not provided
      * @return void
@@ -34,7 +33,6 @@ class Directo {
 
     /**
      * Set Account Name.
-     *
      * @param string $value
      * @return void
      */
@@ -45,7 +43,6 @@ class Directo {
 
     /**
      * Get Account Name.
-     *
      * @return string
      */
     public function getAccountName()
@@ -55,7 +52,6 @@ class Directo {
 
     /**
      * Set Private Key.
-     *
      * @param string $value
      * @return void
      */
@@ -66,7 +62,6 @@ class Directo {
 
     /**
      * Get Private Key.
-     *
      * @return string
      */
     public function getPrivateKey()
@@ -74,14 +69,8 @@ class Directo {
         return $this->privateKey;
     }
 
-    public function getItemURL()
-    {
-        return $this->getResourceURL('item');
-    }
-
     /**
      * Returns full resource URL.
-     *
      * @param $type
      * @return string
      */
@@ -90,15 +79,5 @@ class Directo {
         return self::DIRECTO_BASE_URL.'/'.
             $this->accountName.'/xmlcore.asp?get=1&what='.$type.'&key='.
             $this->privateKey;
-    }
-
-    /**
-     * @return SimpleXMLElement
-     */
-    public function getItemXML()
-    {
-        $itemsUrl = $this->getItemURL();
-
-        return simplexml_load_file($itemsUrl);
     }
 }
