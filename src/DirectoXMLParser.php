@@ -6,6 +6,8 @@ class DirectoXMLParser
 {
 
     /**
+     * Response parser.
+     *
      * @param \Directo\DirectoClient $response
      * @return \SimpleXMLElement
      */
@@ -15,6 +17,8 @@ class DirectoXMLParser
     }
 
     /**
+     * Returns key values mapped data field array
+     *
      * @param $item
      * @return array
      */
@@ -32,6 +36,8 @@ class DirectoXMLParser
     }
 
     /**
+     * Returns data field value by code.
+     *
      * @param $item
      * @param $code
      * @return mixed
@@ -42,5 +48,23 @@ class DirectoXMLParser
         if (isset($datafields[$code])) {
             return $datafields[$code];
         }
+    }
+
+    /**
+     * Returns attribute value.
+     *
+     * @param $obj
+     * @param $att
+     * @return mixed
+     */
+    public function getAttributeValue($obj, $att)
+    {
+        $attribute = $obj->attributes()
+            ->$att;
+        if (isset($attribute)) {
+            return $attribute->__toString();
+        }
+
+        return false;
     }
 }

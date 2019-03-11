@@ -80,4 +80,9 @@ class Directo implements DirectoInterface {
             $this->accountName.'/xmlcore.asp?get=1&what='.$type.'&key='.
             $this->privateKey;
     }
+
+    public function getPostURL()
+    {
+        return self::DIRECTO_BASE_URL . '/'. $this->accountName.'/xmlcore.asp';
+    }
 }

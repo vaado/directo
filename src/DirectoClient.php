@@ -18,15 +18,36 @@ class DirectoClient {
     }
 
     /**
+     * HTTP get request.
+     *
      * @param $type
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
     public function get($type)
     {
-        $url = $this->directo->getResourceUrl($type);
         $client = new Client();
+        $url = $this->directo->getResourceUrl($type);
 
         return $client->request('GET', $url);
     }
 
+    /**
+     * HTTP Post request.
+     *
+     * @param $xml
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     */
+    public function post($xml)
+    {
+        $client = new Client();
+        $url = $this->directo->getPostURL();
+        $options = [
+            'headers' => [
+                'Content-Type' => 'text/xml; charset=UTF8',
+            ],
+            'body' => $xml,
+        ];
+
+        return $client->request('POST', $url, $options);
+    }
 }

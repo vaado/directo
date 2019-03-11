@@ -5,6 +5,8 @@ namespace Directo;
 class ClientFactory {
 
     /**
+     * Creates Directo client.
+     *
      * @param $accountName
      * @param $privateKey
      * @return DirectoClient
