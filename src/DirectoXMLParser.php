@@ -59,6 +59,10 @@ class DirectoXMLParser
      */
     public function getAttributeValue($obj, $att)
     {
+        if ($att === 0) {
+            return false;
+        }
+
         $attribute = $obj->attributes()
             ->$att;
         if (isset($attribute)) {

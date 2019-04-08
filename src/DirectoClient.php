@@ -34,18 +34,23 @@ class DirectoClient {
     /**
      * HTTP Post request.
      *
+     * @param $type
      * @param $xml
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function post($xml)
+    public function post($type, $xml)
     {
         $client = new Client();
         $url = $this->directo->getPostURL();
         $options = [
             'headers' => [
-                'Content-Type' => 'text/xml; charset=UTF8',
+                'Content-Type' => 'application/x-www-form-urlencoded'
             ],
-            'body' => $xml,
+            'form_params'=> [
+                'what' => $type,
+                'put' => 1,
+                'xmldata' => $xml
+            ]
         ];
 
         return $client->request('POST', $url, $options);
