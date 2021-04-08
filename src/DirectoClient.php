@@ -28,7 +28,14 @@ class DirectoClient {
         $client = new Client();
         $url = $this->directo->getResourceUrl($type);
 
-        return $client->request('GET', $url);
+        return $client->request(
+            'POST',
+            $url,
+            [
+                'form_params' => [
+                    'key' => $this->directo->getPrivateKey()
+                ]
+            ]);
     }
 
     /**
@@ -47,6 +54,7 @@ class DirectoClient {
                 'Content-Type' => 'application/x-www-form-urlencoded'
             ],
             'form_params'=> [
+                'key' => $this->directo->getPrivateKey(),
                 'what' => $type,
                 'put' => 1,
                 'xmldata' => $xml

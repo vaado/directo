@@ -7,7 +7,7 @@ class Directo implements DirectoInterface {
     /**
      * @var string base URL.
      */
-    const DIRECTO_BASE_URL = 'https://directo.gate.ee/xmlcore';
+    const DIRECTO_BASE_URL = 'https://login.directo.ee/xmlcore';
 
     /**
      * @var string Account Name.
@@ -77,8 +77,7 @@ class Directo implements DirectoInterface {
     public function getResourceURL($type)
     {
         return self::DIRECTO_BASE_URL.'/'.
-            $this->accountName.'/xmlcore.asp?get=1&what='.$type.'&key='.
-            $this->privateKey;
+            $this->accountName.'/xmlcore.asp?get=1&what='.$type;
     }
 
     public function getPostURL()
